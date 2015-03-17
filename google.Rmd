@@ -31,10 +31,9 @@ states <- data.frame(state.name, state.x77)
 #storm.injuries.map <- aggregate(INJURIES ~ STATE, storm.data2, sum)
 #storm.prop.map <- aggregate(PROPDMG ~ STATE, storm.data2, sum)
 #storm.crops.map <- aggregate(CROPDMG ~ STATE, storm.data2, sum)
-GeoStates <- gvisGeoChart(states, "state.name", "Murder",
+gvisGeoChart(states, "state.name", "Murder",
                           options=list(region="US", 
                                        displayMode="regions", 
                                        resolution="provinces",
                                        width=600, height=400))
-plot(GeoStates)
 ```

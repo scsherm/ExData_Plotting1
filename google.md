@@ -5,35 +5,7 @@ echo = TRUE
 suppressPackageStartupMessages(require(dplyr))
 suppressPackageStartupMessages(require(plyr))
 library(googleVis)
-```
-
-```
-## 
-## Welcome to googleVis version 0.5.6
-## 
-## Please read the Google API Terms of Use
-## before you start using the package:
-## https://developers.google.com/terms/
-## 
-## Note, the plot method of googleVis will by default use
-## the standard browser to display its output.
-## 
-## See the googleVis package vignettes for more details,
-## or visit http://github.com/mages/googleVis.
-## 
-## To suppress this message use:
-## suppressPackageStartupMessages(library(googleVis))
-```
-
-```r
 library(gridExtra)
-```
-
-```
-## Loading required package: grid
-```
-
-```r
 library(ggplot2)
 library(ggthemes)
 library(maps)
@@ -55,23 +27,41 @@ states <- data.frame(state.name, state.x77)
 #storm.injuries.map <- aggregate(INJURIES ~ STATE, storm.data2, sum)
 #storm.prop.map <- aggregate(PROPDMG ~ STATE, storm.data2, sum)
 #storm.crops.map <- aggregate(CROPDMG ~ STATE, storm.data2, sum)
-GeoStates <- gvisGeoChart(states, "state.name", "Murder",
+gvisGeoChart(states, "state.name", "Murder",
                           options=list(region="US", 
                                        displayMode="regions", 
                                        resolution="provinces",
                                        width=600, height=400))
-plot(GeoStates)
 ```
 
-<!-- GeoChart generated in R 3.1.2 by googleVis 0.5.6 package -->
-<!-- Tue Mar 17 09:40:15 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>GeoChartID15bae2721694b</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<style type="text/css">
+body {
+  color: #444444;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 75%;
+  }
+  a {
+  color: #4D87C7;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+ <!-- GeoChart generated in R 3.1.2 by googleVis 0.5.6 package -->
+<!-- Tue Mar 17 09:42:59 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID15b646216f037 () {
+function gvisDataGeoChartID15bae2721694b () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -283,8 +273,8 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID15b646216f037() {
-var data = gvisDataGeoChartID15b646216f037();
+function drawChartGeoChartID15bae2721694b() {
+var data = gvisDataGeoChartID15bae2721694b();
 var options = {};
 options["width"] =    600;
 options["height"] =    400;
@@ -293,7 +283,7 @@ options["displayMode"] = "regions";
 options["resolution"] = "provinces";
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID15b646216f037')
+    document.getElementById('GeoChartID15bae2721694b')
     );
     chart.draw(data,options);
     
@@ -317,9 +307,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID15b646216f037);
+callbacks.push(drawChartGeoChartID15bae2721694b);
 })();
-function displayChartGeoChartID15b646216f037() {
+function displayChartGeoChartID15bae2721694b() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -343,10 +333,18 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID15b646216f037"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID15bae2721694b"></script>
  
 <!-- divChart -->
   
-<div id="GeoChartID15b646216f037" 
+<div id="GeoChartID15bae2721694b" 
   style="width: 600; height: 400;">
 </div>
+ <div><span>Data: states &#8226; Chart ID: <a href="Chart_GeoChartID15bae2721694b.html">GeoChartID15bae2721694b</a> &#8226; <a href="https://github.com/mages/googleVis">googleVis-0.5.6</a></span><br /> 
+<!-- htmlFooter -->
+<span> 
+  R version 3.1.2 (2014-10-31) 
+  &#8226; <a href="https://developers.google.com/terms/">Google Terms of Use</a> &#8226; <a href="https://google-developers.appspot.com/chart/interactive/docs/gallery/geochart">Documentation and Data Policy</a>
+</span></div>
+</body>
+</html>
