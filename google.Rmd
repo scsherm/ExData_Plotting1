@@ -1,0 +1,40 @@
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
+```{r results = 'asis', cache = TRUE}
+echo = TRUE
+suppressPackageStartupMessages(require(dplyr))
+suppressPackageStartupMessages(require(plyr))
+library(googleVis)
+library(gridExtra)
+library(ggplot2)
+library(ggthemes)
+library(maps)
+library(mapproj)
+library(scales)
+options(scipen = 6) #Reduce probability of scientific notation
+#storm.data <- read.csv("StormData.csv") #Read data file
+#For better examination and manipulation
+#storm.data <- as.data.frame(tbl_df(storm.data))
+op <- options(gvis.plot.tag='chart')
+#storm.data2 <- storm.data
+#Change state abbreviations to state names (lowercase) to match the map data
+#storm.data2$STATE <- state.name[match(storm.data2$STATE, state.abb)]
+#Load the map state data
+m.usa <- map_data("state")
+f<- state.x77
+states <- data.frame(state.name, state.x77)
+#storm.fatalities.map <- aggregate(FATALITIES ~ STATE, storm.data2, sum)
+#storm.injuries.map <- aggregate(INJURIES ~ STATE, storm.data2, sum)
+#storm.prop.map <- aggregate(PROPDMG ~ STATE, storm.data2, sum)
+#storm.crops.map <- aggregate(CROPDMG ~ STATE, storm.data2, sum)
+GeoStates <- gvisGeoChart(states, "state.name", "Murder",
+                          options=list(region="US", 
+                                       displayMode="regions", 
+                                       resolution="provinces",
+                                       width=600, height=400))
+plot(GeoStates)
+```

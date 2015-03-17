@@ -5,28 +5,57 @@ echo = TRUE
 suppressPackageStartupMessages(require(dplyr))
 suppressPackageStartupMessages(require(plyr))
 library(googleVis)
+```
+
+```
+## 
+## Welcome to googleVis version 0.5.6
+## 
+## Please read the Google API Terms of Use
+## before you start using the package:
+## https://developers.google.com/terms/
+## 
+## Note, the plot method of googleVis will by default use
+## the standard browser to display its output.
+## 
+## See the googleVis package vignettes for more details,
+## or visit http://github.com/mages/googleVis.
+## 
+## To suppress this message use:
+## suppressPackageStartupMessages(library(googleVis))
+```
+
+```r
 library(gridExtra)
+```
+
+```
+## Loading required package: grid
+```
+
+```r
 library(ggplot2)
 library(ggthemes)
 library(maps)
 library(mapproj)
 library(scales)
 options(scipen = 6) #Reduce probability of scientific notation
-storm.data <- read.csv("StormData.csv") #Read data file
+#storm.data <- read.csv("StormData.csv") #Read data file
 #For better examination and manipulation
-storm.data <- as.data.frame(tbl_df(storm.data))
+#storm.data <- as.data.frame(tbl_df(storm.data))
 op <- options(gvis.plot.tag='chart')
-storm.data2 <- storm.data
+#storm.data2 <- storm.data
 #Change state abbreviations to state names (lowercase) to match the map data
-storm.data2$STATE <- state.name[match(storm.data2$STATE, state.abb)]
+#storm.data2$STATE <- state.name[match(storm.data2$STATE, state.abb)]
 #Load the map state data
 m.usa <- map_data("state")
-
-storm.fatalities.map <- aggregate(FATALITIES ~ STATE, storm.data2, sum)
-storm.injuries.map <- aggregate(INJURIES ~ STATE, storm.data2, sum)
-storm.prop.map <- aggregate(PROPDMG ~ STATE, storm.data2, sum)
-storm.crops.map <- aggregate(CROPDMG ~ STATE, storm.data2, sum)
-GeoStates <- gvisGeoChart(storm.prop.map, "STATE", "PROPDMG",
+f<- state.x77
+states <- data.frame(state.name, state.x77)
+#storm.fatalities.map <- aggregate(FATALITIES ~ STATE, storm.data2, sum)
+#storm.injuries.map <- aggregate(INJURIES ~ STATE, storm.data2, sum)
+#storm.prop.map <- aggregate(PROPDMG ~ STATE, storm.data2, sum)
+#storm.crops.map <- aggregate(CROPDMG ~ STATE, storm.data2, sum)
+GeoStates <- gvisGeoChart(states, "state.name", "Murder",
                           options=list(region="US", 
                                        displayMode="regions", 
                                        resolution="provinces",
@@ -35,227 +64,227 @@ plot(GeoStates)
 ```
 
 <!-- GeoChart generated in R 3.1.2 by googleVis 0.5.6 package -->
-<!-- Mon Mar 16 18:10:03 2015 -->
+<!-- Tue Mar 17 09:40:15 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataGeoChartID13aef22b027a0 () {
+function gvisDataGeoChartID15b646216f037 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
  [
  "Alabama",
-363606.66 
+15.1 
 ],
 [
  "Alaska",
-33995.51 
+11.3 
 ],
 [
  "Arizona",
-83046.67 
+7.8 
 ],
 [
  "Arkansas",
-361121.58 
+10.1 
 ],
 [
  "California",
-203598.79 
+10.3 
 ],
 [
  "Colorado",
-81496.79 
+6.8 
 ],
 [
  "Connecticut",
-29155.17 
+3.1 
 ],
 [
  "Delaware",
-18304.17 
+6.2 
 ],
 [
  "Florida",
-374427.95 
+10.7 
 ],
 [
  "Georgia",
-485873.68 
+13.9 
 ],
 [
  "Hawaii",
-11688.61 
+6.2 
 ],
 [
  "Idaho",
-41538.09 
+5.3 
 ],
 [
  "Illinois",
-357624.15 
+10.3 
 ],
 [
  "Indiana",
-260225.49 
+7.1 
 ],
 [
  "Iowa",
-685487.35 
+2.3 
 ],
 [
  "Kansas",
-387183.8 
+4.5 
 ],
 [
  "Kentucky",
-242190.66 
+10.6 
 ],
 [
  "Louisiana",
-294074.96 
+13.2 
 ],
 [
  "Maine",
-65171.45 
+2.7 
 ],
 [
  "Maryland",
-89255.86 
+8.5 
 ],
 [
  "Massachusetts",
-78400.37 
+3.3 
 ],
 [
  "Michigan",
-225030.23 
+11.1 
 ],
 [
  "Minnesota",
-194999.27 
+2.3 
 ],
 [
  "Mississippi",
-481811.85 
+12.5 
 ],
 [
  "Missouri",
-329207.32 
+9.3 
 ],
 [
  "Montana",
-60102.11 
+5 
 ],
 [
  "Nebraska",
-318614.86 
+2.9 
 ],
 [
  "Nevada",
-30711.75 
+11.5 
 ],
 [
  "New Hampshire",
-51667.49 
+3.3 
 ],
 [
  "New Jersey",
-70504.77 
+5.2 
 ],
 [
  "New Mexico",
-54619.96 
+9.7 
 ],
 [
  "New York",
-373109.42 
+10.9 
 ],
 [
  "North Carolina",
-255058.55 
+11.1 
 ],
 [
  "North Dakota",
-163863.13 
+1.4 
 ],
 [
  "Ohio",
-559834.39 
+7.4 
 ],
 [
  "Oklahoma",
-347294 
+6.4 
 ],
 [
  "Oregon",
-22832.59 
+4.2 
 ],
 [
  "Pennsylvania",
-288611.06 
+6.1 
 ],
 [
  "Rhode Island",
-10880.9 
+2.4 
 ],
 [
  "South Carolina",
-151890.23 
+11.6 
 ],
 [
  "South Dakota",
-132139.08 
+1.7 
 ],
 [
  "Tennessee",
-272126.78 
+11 
 ],
 [
  "Texas",
-937137.98 
+12.2 
 ],
 [
  "Utah",
-45664.33 
+4.5 
 ],
 [
  "Vermont",
-97582.57 
+5.5 
 ],
 [
  "Virginia",
-206132.3 
+9.5 
 ],
 [
  "Washington",
-81090.72 
+4.3 
 ],
 [
  "West Virginia",
-163223.28 
+6.7 
 ],
 [
  "Wisconsin",
-311608.66 
+3 
 ],
 [
  "Wyoming",
-37172.2 
+6.9 
 ] 
 ];
-data.addColumn('string','STATE');
-data.addColumn('number','PROPDMG');
+data.addColumn('string','state.name');
+data.addColumn('number','Murder');
 data.addRows(datajson);
 return(data);
 }
  
 // jsDrawChart
-function drawChartGeoChartID13aef22b027a0() {
-var data = gvisDataGeoChartID13aef22b027a0();
+function drawChartGeoChartID15b646216f037() {
+var data = gvisDataGeoChartID15b646216f037();
 var options = {};
 options["width"] =    600;
 options["height"] =    400;
@@ -264,7 +293,7 @@ options["displayMode"] = "regions";
 options["resolution"] = "provinces";
 
     var chart = new google.visualization.GeoChart(
-    document.getElementById('GeoChartID13aef22b027a0')
+    document.getElementById('GeoChartID15b646216f037')
     );
     chart.draw(data,options);
     
@@ -288,9 +317,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartGeoChartID13aef22b027a0);
+callbacks.push(drawChartGeoChartID15b646216f037);
 })();
-function displayChartGeoChartID13aef22b027a0() {
+function displayChartGeoChartID15b646216f037() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -314,10 +343,10 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID13aef22b027a0"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartID15b646216f037"></script>
  
 <!-- divChart -->
   
-<div id="GeoChartID13aef22b027a0" 
+<div id="GeoChartID15b646216f037" 
   style="width: 600; height: 400;">
 </div>
